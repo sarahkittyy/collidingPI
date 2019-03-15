@@ -2,12 +2,25 @@ let box1;
 let box2;
 let collisions;
 
-const digits = 2;
-const timeStep = 1000;
+let p;
+let slider;
+let lastval = 1;
+
+let digits = 1;
+let timeStep;
 
 function setup()
 {
 	createCanvas(600,600);
+	reset();
+	
+	slider = createSlider(1, 12, 1, 1);
+	p = createP(slider.value());
+}
+
+function reset()
+{
+	timeStep = pow(10, max(1, digits-2));
 	box1 = new Box(300, 2*digits, pow(100, digits - 1), -5 / timeStep);
 	box2 = new Box(100, 1, 1, 0);
 	collisions = 0;
@@ -43,6 +56,15 @@ function draw()
 		
 	box1.show(box2.w, 0);
 	box2.show(0, 1);
+	
+	p.html('Digits: ' + slider.value());
+	if(lastval != slider.value())
+	{
+		lastval = slider.value();
+		digits = slider.value();
+		reset();
+		return;
+	}
 	
 	fill(180);
 	textSize(30);
