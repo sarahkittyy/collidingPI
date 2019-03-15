@@ -14,6 +14,7 @@ function setup()
 	createCanvas(600,600);
 	reset();
 	
+	createP('');
 	slider = createSlider(1, 12, 1, 1);
 	p = createP(slider.value());
 }
