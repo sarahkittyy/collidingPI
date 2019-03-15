@@ -21,7 +21,7 @@ function setup()
 
 function reset()
 {
-	timeStep = pow(10, max(1, digits-2));
+	timeStep = 5*pow(10, max(1, digits-2));
 	box1 = new Box(300, 2*digits, pow(100, digits - 1), -5 / timeStep);
 	box2 = new Box(100, 1, 1, 0);
 	collisions = 0;
